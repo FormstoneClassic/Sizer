@@ -1,0 +1,27 @@
+{
+	"name": "Sizer",
+	"version": "0.0.5",
+	"description": "A jQuery plugin for matching vertical heights.",
+	"keywords": [
+		"javascript",
+		"jquery",
+		"height",
+		"formstone",
+		"benplum"
+	],
+	"authors": [
+		"Ben Plum"
+	],
+	"license": "MIT",
+	"homepage": "http://www.benplum.com/formstone/sizer/",
+	"main": [
+		"jquery.fs.sizer.min.js"
+	],
+	"ignore": [
+		"*.json"
+	],
+	"dependencies": {
+		"jquery": ">= 1.7.0"
+	},
+	"devDependencies": {}
+}
