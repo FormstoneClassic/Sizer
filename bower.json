@@ -1,6 +1,6 @@
 {
 	"name": "Sizer",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "A jQuery plugin for matching vertical heights.",
 	"keywords": [
 		"javascript",

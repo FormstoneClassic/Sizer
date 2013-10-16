@@ -1,7 +1,7 @@
 /*
  * Sizer Plugin [Formstone Library]
  * @author Ben Plum
- * @version 0.1.0
+ * @version 0.1.1
  *
  * Copyright (c) 2013 Ben Plum <mr@benplum.com>
  * Released under the MIT License <http://www.opensource.org/licenses/mit-license.php>
@@ -18,7 +18,8 @@ if (jQuery) (function($) {
 				data.$sizer.off("resize.sizer");
 				data.$items.css({ height: "" });
 				if (data.updateParent) {
-					data.$sizer.css({ height: "" });
+					data.$sizer.css({ height: "" })
+							   .find(".sizer-update").css({ height: "" });
 				}
 			});
 		},
@@ -49,7 +50,7 @@ if (jQuery) (function($) {
 			data = {
 				$sizer: $sizer,
 				$items: $sizer.find(".sizer-item"),
-				updateParent: ($sizer.hasClass("sizer-update")),
+				updateParent: $sizer.hasClass("sizer-update") || $sizer.find(".sizer-update"),
 				minWidth: $sizer.data("sizer-min-width") || 0,
 				diabled: false,
 				guid: sizerCount++
@@ -69,9 +70,9 @@ if (jQuery) (function($) {
 	
 	function _resize(data) {
 		var height = 0;
-		data.$items.css({ height: false });
+		data.$items.css({ height: "" });
 		
-		if (data.minWidth > Site.minWidth) {
+		if (data.minWidth < Site.maxWidth) {
 			for (var i = 0; i < data.$items.length; i++) {
 				var itemHeight = data.$items.eq(i).find(".sizer-size").outerHeight(true);
 				if (itemHeight > height) {
@@ -81,7 +82,8 @@ if (jQuery) (function($) {
 			
 			data.$items.css({ height: height });
 			if (data.updateParent) {
-				data.$sizer.css({ height: height });
+				data.$sizer.css({ height: height })
+						   .find(".sizer-update").css({ height: height });
 			}
 		}
 	}
