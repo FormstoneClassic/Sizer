@@ -1,7 +1,7 @@
 /*
  * Sizer Plugin [Formstone Library]
  * @author Ben Plum
- * @version 0.1.1
+ * @version 0.1.2
  *
  * Copyright (c) 2013 Ben Plum <mr@benplum.com>
  * Released under the MIT License <http://www.opensource.org/licenses/mit-license.php>
@@ -63,9 +63,16 @@ if (jQuery) (function($) {
 				   .on("resize.sizer", data, pub.resize)
 				   .trigger("resize.sizer");
 		
-		data.$sizer.on("load", "img", function() {
-			$(this).trigger("resize.sizer");
-		});
+		data.$sizer.find("img").each(function() {
+			var $img = $(this);
+			if (!$img[0].complete) {
+				$img.on("load", function() {
+					$(this).trigger("resize.sizer");
+				});
+			} else {
+				$(this).trigger("resize.sizer");
+			}
+		}); 
 	}
 	
 	function _resize(data) {
