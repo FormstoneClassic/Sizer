@@ -1,7 +1,7 @@
 /*
  * Sizer Plugin [Formstone Library]
  * @author Ben Plum
- * @version 0.1.2
+ * @version 0.1.3
  *
  * Copyright (c) 2013 Ben Plum <mr@benplum.com>
  * Released under the MIT License <http://www.opensource.org/licenses/mit-license.php>
@@ -50,7 +50,7 @@ if (jQuery) (function($) {
 			data = {
 				$sizer: $sizer,
 				$items: $sizer.find(".sizer-item"),
-				updateParent: $sizer.hasClass("sizer-update") || $sizer.find(".sizer-update"),
+				updateParent: $sizer.hasClass("sizer-update") || $sizer.find(".sizer-update").length > 0,
 				minWidth: $sizer.data("sizer-min-width") || 0,
 				diabled: false,
 				guid: sizerCount++
