@@ -1,7 +1,7 @@
 /*
  * Sizer Plugin [Formstone Library]
  * @author Ben Plum
- * @version 0.1.3
+ * @version 0.1.4
  *
  * Copyright (c) 2013 Ben Plum <mr@benplum.com>
  * Released under the MIT License <http://www.opensource.org/licenses/mit-license.php>
@@ -10,7 +10,19 @@
 if (jQuery) (function($) {
 	var sizerCount = 0;
 	
+	var options = {
+		minWidth: 0
+	};
+	
 	var pub = {
+		
+		// Set Defaults
+		defaults: function(opts) {
+			options = $.extend(options, opts || {});
+			return $(this);
+		},
+		
+		// Disable
 		disable: function() {
 			$(this).each(function() {
 				var data = $(this).data("sizer");
@@ -24,6 +36,7 @@ if (jQuery) (function($) {
 			});
 		},
 		
+		// Enable
 		enable: function() {
 			$(this).each(function() {
 				var data = $(this).data("sizer");
@@ -35,26 +48,37 @@ if (jQuery) (function($) {
 			});
 		},
 		
+		// Resize
 		resize: function(e) {
 			var data = e.data;
 			$.doTimeout("sizer-"+data.guid+"-reset", Site.debounceTime, _resize, data);
 		}
 	};
 	
-	function _init() {
-		return $(this).each(_build);
+	
+	// Initialize
+	function _init(opts) {
+		// Settings
+		opts = $.extend({}, options, opts);
+		
+		// Apply to each element
+		var $items = $(this);
+		for (var i = 0, count = $items.length; i < count; i++) {
+			_build($items.eq(i), opts);
+		}
+		
+		return $items;
 	}
 	
-	function _build() {
-		var $sizer = $(this),
-			data = {
+	function _build($sizer, opts) {
+		var data = $.extend({}, {
 				$sizer: $sizer,
 				$items: $sizer.find(".sizer-item"),
 				updateParent: $sizer.hasClass("sizer-update") || $sizer.find(".sizer-update").length > 0,
-				minWidth: $sizer.data("sizer-min-width") || 0,
+				/* minWidth: $sizer.data("sizer-min-width") || 0, */
 				diabled: false,
 				guid: sizerCount++
-			};
+			}, opts);
 		
 		data.$items.wrapInner('<div class="sizer-size" />');
 		
@@ -76,10 +100,9 @@ if (jQuery) (function($) {
 	}
 	
 	function _resize(data) {
-		var height = 0;
-		data.$items.css({ height: "" });
-		
 		if (data.minWidth < Site.maxWidth) {
+			var height = 0;
+			
 			for (var i = 0; i < data.$items.length; i++) {
 				var itemHeight = data.$items.eq(i).find(".sizer-size").outerHeight(true);
 				if (itemHeight > height) {
@@ -92,6 +115,9 @@ if (jQuery) (function($) {
 				data.$sizer.css({ height: height })
 						   .find(".sizer-update").css({ height: height });
 			}
+		} else {
+			data.$items.css({ height: "" });
+			data.$sizer.css({ height: "" });
 		}
 	}
 	
