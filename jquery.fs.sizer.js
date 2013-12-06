@@ -1,7 +1,7 @@
 /*
  * Sizer Plugin [Formstone Library]
  * @author Ben Plum
- * @version 0.1.4
+ * @version 0.1.5
  *
  * Copyright (c) 2013 Ben Plum <mr@benplum.com>
  * Released under the MIT License <http://www.opensource.org/licenses/mit-license.php>
@@ -42,16 +42,10 @@ if (jQuery) (function($) {
 				var data = $(this).data("sizer");
 				if (data.disabled) {
 					data.disabled = false;
-					data.$sizer.on("resize.sizer", data, pub.resize)
+					data.$sizer.on("resize.sizer", data, _resize)
 							   .trigger("resize.sizer");
 				}
 			});
-		},
-		
-		// Resize
-		resize: function(e) {
-			var data = e.data;
-			$.doTimeout("sizer-"+data.guid+"-reset", Site.debounceTime, _resize, data);
 		}
 	};
 	
@@ -65,6 +59,10 @@ if (jQuery) (function($) {
 		var $items = $(this);
 		for (var i = 0, count = $items.length; i < count; i++) {
 			_build($items.eq(i), opts);
+		}
+		
+		if (!$("#sizer-style").length) {
+			$("body").append('<style id="sizer-style">.sizer-item:after { clear: both; content: "."; display: block; height: 0; line-height: 0; visibility: hidden; }</style>');
 		}
 		
 		return $items;
@@ -84,7 +82,7 @@ if (jQuery) (function($) {
 		
 		data.$sizer.addClass("sizer-ready")
 				   .data("sizer", data)
-				   .on("resize.sizer", data, pub.resize)
+				   .on("resize.sizer", data, _resize)
 				   .trigger("resize.sizer");
 		
 		data.$sizer.find("img").each(function() {
@@ -99,7 +97,9 @@ if (jQuery) (function($) {
 		}); 
 	}
 	
-	function _resize(data) {
+	function _resize(e) {
+		var data = e.data;
+		
 		if (data.minWidth < Site.maxWidth) {
 			var height = 0;
 			
