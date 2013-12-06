@@ -1,7 +1,7 @@
 /*
  * Sizer Plugin [Formstone Library]
  * @author Ben Plum
- * @version 0.1.5
+ * @version 0.1.6
  *
  * Copyright (c) 2013 Ben Plum <mr@benplum.com>
  * Released under the MIT License <http://www.opensource.org/licenses/mit-license.php>
@@ -62,7 +62,7 @@ if (jQuery) (function($) {
 		}
 		
 		if (!$("#sizer-style").length) {
-			$("body").append('<style id="sizer-style">.sizer-item:after { clear: both; content: "."; display: block; height: 0; line-height: 0; visibility: hidden; }</style>');
+			$("body").append('<style id="sizer-style">.sizer-size:after { clear: both; content: "."; display: block; height: 0; line-height: 0; visibility: hidden; }</style>');
 		}
 		
 		return $items;
