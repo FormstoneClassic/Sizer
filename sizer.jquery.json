@@ -1,28 +1,31 @@
 {
-	"name": "sizer",
-	"title": "Sizer",
-	"description": "A jQuery plugin for matching vertical heights.",
-	"keywords": [
-		"height",
-		"formstone",
-		"benplum"
-	],
-	"version": "0.1.6",
-	"author": {
-		"name": "Ben Plum",
-		"url": "http://www.benplum.com"
-	},
-	"licenses": [
-		{
-			"type": "MIT",
-			"url": "http://www.opensource.org/licenses/mit-license.php"
-		}
-	],
-	"docs": "http://www.benplum.com/formstone/sizer/",
-	"demo": "http://www.benplum.com/formstone/sizer/",
-	"download": "https://github.com/benplum/Sizer",
-	"bugs": "https://github.com/benplum/Sizer/issues",
-	"dependencies": {
-		"jquery": ">=1.7"
-	}
+  "name": "sizer",
+  "version": "3.0.0",
+  "title": "Sizer",
+  "author": {
+    "name": "Ben Plum",
+    "email": "mr@benplum.com",
+    "url": "http://www.benplum.com"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  ],
+  "dependencies": {
+    "jquery": ">=1.7"
+  },
+  "description": "A jQuery plugin for matching dimensions. Part of the Formstone Library.",
+  "keywords": [
+    "javascript",
+    "jquery",
+    "formstone",
+    "benplum"
+  ],
+  "docs": "http://formstone.it/sizer/",
+  "demo": "http://formstone.it/sizer/",
+  "download": "https://github.com/benplum/Sizer",
+  "bugs": "https://github.com/benplum/Sizer/issues",
+  "homepage": "http://formstone.it/sizer/"
 }

@@ -1,11 +1,3 @@
-/* 
- * Sizer v3.0.0 - 2014-03-05 
- * A jQuery plugin for matching dimensions. Part of the Formstone Library. 
- * http://formstone.it/sizer/ 
- * 
- * Copyright 2014 Ben Plum; MIT Licensed 
- */ 
-
 ;(function ($, window) {
 	"use strict";
 
