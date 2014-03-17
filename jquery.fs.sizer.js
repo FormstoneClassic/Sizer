@@ -1,5 +1,5 @@
 /* 
- * Sizer v3.0.0 - 2014-03-05 
+ * Sizer v3.0.1 - 2014-03-17 
  * A jQuery plugin for matching dimensions. Part of the Formstone Library. 
  * http://formstone.it/sizer/ 
  * 
@@ -185,8 +185,6 @@
 			data.$items.css({ height: "" });
 			data.$sizer.css({ height: "" });
 		}
-
-		console.log(height);
 	}
 
 	$.fn.sizer = function(method) {

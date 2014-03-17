@@ -177,8 +177,6 @@
 			data.$items.css({ height: "" });
 			data.$sizer.css({ height: "" });
 		}
-
-		console.log(height);
 	}
 
 	$.fn.sizer = function(method) {
