@@ -38,7 +38,6 @@
 				if (data && !data.disabled) {
 					data.disabled = true;
 
-					data.$sizer.off(".sizer");
 					data.$items.css({ height: "" });
 
 					if (data.updateParent) {
@@ -86,8 +85,23 @@
 
 				if (data && data.disabled) {
 					data.disabled = false;
-					data.$sizer.on("resize.sizer", data, _resize)
-							   .trigger("resize.sizer");
+					_resize({ data: data });
+				}
+			});
+		},
+
+		/**
+		 * @method
+		 * @name resize
+		 * @description Resizes instance of plugin
+		 * @example $(".target").sizer("resize");
+		 */
+		resize: function() {
+			return $(this).each(function(i, el) {
+				var data = $(el).data("sizer");
+
+				if (data) {
+					_resize({ data: data });
 				}
 			});
 		}
@@ -137,18 +151,18 @@
 			data.$items.wrapInner('<div class="sizer-size" />');
 
 			data.$sizer.addClass("sizer")
-					   .data("sizer", data)
-					   .on("resize.sizer", data, _resize)
-					   .trigger("resize.sizer");
+					   .data("sizer", data);
+
+			_resize({ data: data });
 
 			data.$sizer.find("img").each(function() {
 				var $img = $(this);
 				if (!$img[0].complete) {
-					$img.on("load", function() {
-						$(this).trigger("resize.sizer");
+					$img.one("load", function() {
+						_resize({ data: data });
 					});
 				} else {
-					$(this).trigger("resize.sizer");
+					_resize({ data: data });
 				}
 			});
 		}
