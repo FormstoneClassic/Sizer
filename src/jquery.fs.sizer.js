@@ -11,6 +11,11 @@
 		minWidth: 0
 	};
 
+	/**
+	 * @events
+	 * @event resize.sizer "Instance resized"
+	 */
+
 	var pub = {
 
 		/**
@@ -145,7 +150,9 @@
 					$sizer: $sizer,
 					$items: $sizer.find(".sizer-item"),
 					updateParent: $sizer.hasClass("sizer-update") || $sizer.find(".sizer-update").length > 0,
-					diabled: false
+					diabled: false,
+					resizeTimer: null,
+					oldHeight: ''
 				}, opts, $sizer.data("sizer-options"));
 
 			data.$items.wrapInner('<div class="sizer-size" />');
@@ -168,12 +175,32 @@
 		}
 	}
 
+	/**
+	 * @method private
+	 * @name _resize
+	 * @description Debounces resize event
+	 * @param e [object] "Event data"
+	 */
 	function _resize(e) {
-		var data = e.data,
-			width = $window.width();
+		var data = e.data;
+
+		data.resizeTimer = _startTimer(data.resizeTimer, 5, function() {
+			_doResize(data);
+		});
+	}
+
+	/**
+	 * @method private
+	 * @name _doResize
+	 * @description Resizes instance
+	 * @param data [object] "Instance data"
+	 */
+	function _doResize(data) {
+		var width = $window.width(),
+			height = "";
 
 		if (data.minWidth < width) {
-			var height = 0;
+			height = 0;
 
 			for (var i = 0; i < data.$items.length; i++) {
 				var itemHeight = data.$items.eq(i).find(".sizer-size").outerHeight(true);
@@ -188,8 +215,39 @@
 						   .find(".sizer-update").css({ height: height });
 			}
 		} else {
-			data.$items.css({ height: "" });
-			data.$sizer.css({ height: "" });
+			data.$items.css({ height: height });
+			data.$sizer.css({ height: height });
+		}
+
+		if (data.oldHeight !== height) {
+			data.oldHeight = height;
+			data.$target.trigger("resize.sizer");
+		}
+	}
+
+	/**
+	 * @method private
+	 * @name _startTimer
+	 * @description Starts an internal timer
+	 * @param timer [int] "Timer ID"
+	 * @param time [int] "Time until execution"
+	 * @param callback [int] "Function to execute"
+	 */
+	function _startTimer(timer, time, callback) {
+		_clearTimer(timer);
+		return setInterval(callback, time);
+	}
+
+	/**
+	 * @method private
+	 * @name _clearTimer
+	 * @description Clears an internal timer
+	 * @param timer [int] "Timer ID"
+	 */
+	function _clearTimer(timer) {
+		if (timer) {
+			clearInterval(timer);
+			timer = null;
 		}
 	}
 
