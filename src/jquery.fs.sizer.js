@@ -13,7 +13,7 @@
 
 	/**
 	 * @events
-	 * @event resize.sizer "Instance resized"
+	 * @event sized.sizer "Instance resized"
 	 */
 
 	var pub = {
@@ -221,7 +221,7 @@
 
 		if (data.oldHeight !== height) {
 			data.oldHeight = height;
-			data.$target.trigger("resize.sizer");
+			data.$sizer.trigger("sized.sizer");
 		}
 	}
 
@@ -235,7 +235,7 @@
 	 */
 	function _startTimer(timer, time, callback) {
 		_clearTimer(timer);
-		return setInterval(callback, time);
+		return setTimeout(callback, time);
 	}
 
 	/**
@@ -246,7 +246,7 @@
 	 */
 	function _clearTimer(timer) {
 		if (timer) {
-			clearInterval(timer);
+			clearTimeout(timer);
 			timer = null;
 		}
 	}
