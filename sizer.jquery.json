@@ -1,6 +1,6 @@
 {
   "name": "sizer",
-  "version": "3.0.4",
+  "version": "3.0.5",
   "title": "Sizer",
   "author": {
     "name": "Ben Plum",
@@ -20,12 +20,11 @@
   "keywords": [
     "javascript",
     "jquery",
-    "formstone",
-    "benplum"
+    "formstone"
   ],
   "docs": "http://formstone.it/sizer/",
   "demo": "http://formstone.it/sizer/",
-  "download": "https://github.com/benplum/Sizer",
-  "bugs": "https://github.com/benplum/Sizer/issues",
+  "download": "https://github.com/Formstone/Sizer",
+  "bugs": "https://github.com/Formstone/Sizer/issues",
   "homepage": "http://formstone.it/sizer/"
 }

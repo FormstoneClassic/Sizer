@@ -2,34 +2,43 @@
 <html lang="en">
 	<head>
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 
 		<title>Sizer Demo </title>
 
-		<link href="http://formstone.it/css/demo.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="http://formstone.it/css/demo.css" rel="stylesheet" type="text/css" media="all">
 
 		<!--[if LTE IE 8]>
-			<link href="http://formstone.it/css/demo.ie.css" rel="stylesheet" type="text/css" media="all" />
+			<link href="http://formstone.it/css/demo.ie.css" rel="stylesheet" type="text/css" media="all">
 		<![endif]-->
 
 		<script src="http://formstone.it/js/demo.js"></script>
 
 		<script src="../jquery.fs.sizer.js"></script>
 
+		<!--[DEMO:START-RESOURCES]-->
+
 		<style>
-			.sized { background: #eee; margin: 20px 0; }
-			.sized p { margin: 0; padding: 20px; }
+			.demo .sized { background: #eee; margin: 20px 0; }
+			.demo .sized p { margin: 0; padding: 20px; }
 		</style>
 
 		<script>
 			$(document).ready(function() {
-				$(".sized").sizer();
+				$(".demo .sized").sizer();
 
 				$(window).on("snap", function() {
-					$(".sized").sizer("resize");
+					$(".demo .sized").sizer("resize");
+				});
+
+				$(window).one("pronto.load", function() {
+					$(".demo .sized").sizer("destroy");
 				});
 			});
 		</script>
+
+		<!--[DEMO:END-RESOURCES]-->
+
 	</head>
 	<body class="gridlock demo">
 		<header id="header">
@@ -43,9 +52,11 @@
 			<div class="mobile-full tablet-full desktop-8 desktop-push-2">
 				<header class="header">
 					<h1>Sizer Demo</h1>
-					<br />
+					<br>
 					<a href="http://formstone.it/sizer/" class="button">View Documentation</a>
 				</header>
+
+				<!--[DEMO:START-CONTENT]-->
 
 				<!-- BASIC -->
 				<h2>Basic</h2>
@@ -66,7 +77,9 @@
 					</div>
 				</div>
 
-				<br />
+				<br>
+
+				<!--[DEMO:END-CONTENT]-->
 
 			</div>
 		</article>
