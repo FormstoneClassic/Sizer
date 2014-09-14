@@ -13,7 +13,8 @@
 
 	/**
 	 * @events
-	 * @event sized.sizer "Instance resized"
+	 * @deprecated update.sizer "Instance resized"
+	 * @deprecated sized.sizer "Instance resized"
 	 */
 
 	var pub = {
@@ -221,7 +222,8 @@
 
 		if (data.oldHeight !== height) {
 			data.oldHeight = height;
-			data.$sizer.trigger("sized.sizer");
+			data.$sizer.trigger("update.sizer")
+					   .trigger("sized.sizer"); // deprecated
 		}
 	}
 

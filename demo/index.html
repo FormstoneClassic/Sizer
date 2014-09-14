@@ -19,8 +19,10 @@
 		<!--[DEMO:START-RESOURCES]-->
 
 		<style>
-			.demo .sized { background: #eee; margin: 20px 0; }
-			.demo .sized p { margin: 0; padding: 20px; }
+			.demo .sized { margin: 20px 0; }
+			.demo .sizer-item { background: #eee; }
+			.demo .sizer-size { padding: 5px; }
+			.demo .sized p { background: #fafafa; margin: 0; padding: 20px; }
 		</style>
 
 		<script>
@@ -31,8 +33,13 @@
 					$(".demo .sized").sizer("resize");
 				});
 
+				$(".demo_tabbed").on("update.tabber", function() {
+					$(".demo .sized").sizer("resize");
+				});
+
 				$(window).one("pronto.load", function() {
 					$(".demo .sized").sizer("destroy");
+					$(".demo_tabbed").off("update.tabber");
 				});
 			});
 		</script>
@@ -70,10 +77,10 @@
 						<p>Etiam porta sem malesuada magna mollis euismod.</p>
 					</div>
 					<div class="all-third sizer-item">
-						<p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+						<p>Maecenas sed diam eget risus varius blandit sit amet non magna faucibus mollis interdum.</p>
 					</div>
 					<div class="all-third sizer-item">
-						<p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+						<p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor.</p>
 					</div>
 				</div>
 
