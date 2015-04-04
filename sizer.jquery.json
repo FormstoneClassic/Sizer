@@ -22,9 +22,9 @@
     "jquery",
     "formstone"
   ],
-  "docs": "http://formstone.it/sizer/",
-  "demo": "http://formstone.it/sizer/",
-  "download": "https://github.com/Formstone/Sizer",
-  "bugs": "https://github.com/Formstone/Sizer/issues",
-  "homepage": "http://formstone.it/sizer/"
+  "docs": "http://classic.formstone.it/sizer/",
+  "demo": "http://classic.formstone.it/sizer/",
+  "download": "https://github.com/FormstoneClassic/Sizer",
+  "bugs": "https://github.com/FormstoneClassic/Sizer/issues",
+  "homepage": "http://classic.formstone.it/sizer/"
 }

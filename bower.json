@@ -8,7 +8,7 @@
     "url": "http://www.benplum.com"
   },
   "license": "MIT",
-  "homepage": "http://formstone.it/sizer/",
+  "homepage": "http://classic.formstone.it/sizer/",
   "main": [
     "jquery.fs.sizer.js"
   ],
